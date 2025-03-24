@@ -10,7 +10,31 @@
 </head>
 <body class="bg-dark">
     <div class='d-flex justify-content-center align-items-center vh-100'>
-        <form class='card col-12 col-md-7 col-lg-5' id='frmSurvey'> <!--Survey page-->
+        <form class = 'card col-12 col-md-5' id='frmRegister'>
+            <div class= 'card-body'>
+                <h2 class = 'text-center text-primary'>Register</h2>
+                <input id='regEmail'  class='form-control mt-2' type='email' aria-label="email" placeholder="Email">
+                <input id='regPassword' class='form-control mt-2' type='password' aria-label="password" placeholder="Password">
+                <input id='regPasswordConfirm' class='form-control mt-2' type='password' aria-label="confirm password" placeholder="Confirm Password">
+                <input id='regFirstName' class='form-control mt-2' type='text' aria-label="first name" placeholder="First Name">
+                <input id='regLastName' class='form-control mt-2' type='text' aria-label="last name" placeholder="Last Name">
+                <button class='btn btn-primary col-12 mt-2' type='button' id='btnRegister' aria-label='register button'>Register</button>
+                <p class="text-center mt-2">Already have an account? <a href="#" id="lnkLogin">Login</a></p>
+            </div>
+        </form>
+
+        <!--Login-->
+        <form class = 'card col-12 col-md-5' id='frmLogin' style='display: none;'>
+            <div class= 'card-body'>
+                <h2 class = 'text-center text-primary'>Login</h2>
+                <input id='loginEmail'  class='form-control mt-2' type='email' aria-label="email" placeholder="Email">
+                <input id='loginPassword' class='form-control mt-2' type='password' aria-label="password" placeholder="Password">
+                <button class='btn btn-primary col-12 mt-2' type='button' id='btnLogin' aria-label='login button'>Login</button>
+                <p class="text-center mt-2">Don't have an account? <a href="#" id="lnkRegister">Register</a></p>
+            </div>
+        </form>
+
+        <form class='card col-12 col-md-7 col-lg-5' id='frmSurvey' style="display: none"> <!--Survey page-->
             <div class='card-body'>
                 <!--Header-->
                 <div class='d-flex justify-content-center align-items-center'>
@@ -108,10 +132,72 @@
             </div>
         </form>
     </div>
-    <script src='https://code.jquery.com/jquery-3.7.1.min.js' integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo='' crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.7.1.min.js' integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=' crossorigin='anonymous'></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script>
+        $('#lnkLogin').click(() => { $('#frmRegister').hide(); $('#frmLogin').show(); $('#frmSurvey').hide(); });
+        $('#lnkRegister').click(() => { $('#frmLogin').hide(); $('#frmRegister').show(); $('#frmSurvey').hide(); });
+
+        $('#btnRegister').click(() => { 
+            let email = $('#regEmail').val().trim();
+            let password = $('#regPassword').val().trim();
+            let passwordConfirm = $('#regPasswordConfirm').val().trim();
+            if (password != passwordConfirm) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Passwords do not match',
+                    icon: 'error'
+                });
+            } else if (email == '' || password == '') {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please enter an email and password',
+                    icon: 'error'
+                });
+            } else {
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully registered',
+                    icon: 'success'
+                });
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+                $('#frmRegister').hide();
+                $('#frmLogin').show();
+            }
+        })
+
+        $('#btnLogin').click(() => {
+            let email = $('#loginEmail').val().trim();
+            let password = $('#loginPassword').val().trim();
+            if (email == '' || password == '') {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please enter an email and password',
+                    icon: 'error'
+                });
+            } else {
+                let storedEmail = localStorage.getItem('email');
+                let storedPassword = localStorage.getItem('password');
+                if (email == storedEmail && password == storedPassword) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'You have successfully logged in',
+                        icon: 'success'
+                    });
+                    $('#frmLogin').hide();
+                    $('#frmSurvey').show();
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Invalid email or password',
+                        icon: 'error'
+                    });
+                }
+            }
+        })
+
         // This script is for the registration form
         document.querySelector('#btnSubmit').addEventListener('click', (e) => {
             let strEmailSelf = document.querySelector('#txtEmailSelf').value
