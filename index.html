@@ -139,28 +139,48 @@
         $('#lnkLogin').click(() => { $('#frmRegister').hide(); $('#frmLogin').show(); $('#frmSurvey').hide(); });
         $('#lnkRegister').click(() => { $('#frmLogin').hide(); $('#frmRegister').show(); $('#frmSurvey').hide(); });
 
-        $('#btnRegister').click(() => { 
+        $('#btnRegister').click(() => {
+            let blnError = false;
+            let strMessage = ''; 
             let email = $('#regEmail').val().trim();
-            let password = $('#regPassword').val().trim();
-            let passwordConfirm = $('#regPasswordConfirm').val().trim();
+            let password = $('#regPassword').val();
+            let passwordConfirm = $('#regPasswordConfirm').val();
+            let firstName = $('#regFirstName').val().trim();
+            let lastName = $('#regLastName').val().trim();
+            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+
+            // Checks for errors in the registration form
+            if (!regemail.test(email)) {
+                    blnError = true
+                    strMessage += '<p class="mt-0 mb-0">Please enter a tech email</p>'
+            } 
             if (password != passwordConfirm) {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Passwords do not match</p>';
+            }
+            if (password.length < 8) {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Password must be at least 8 characters</p>';
+            }
+            if (firstName == '' || lastName == '') {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Please enter a first and last name</p>';
+            }
+
+            
+            if (blnError) {
                 Swal.fire({
-                    title: 'Error',
-                    text: 'Passwords do not match',
+                    title: 'Oh no, you have an error!',
+                    html: strMessage,
                     icon: 'error'
-                });
-            } else if (email == '' || password == '') {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Please enter an email and password',
-                    icon: 'error'
-                });
+                })
             } else {
                 Swal.fire({
                     title: 'Success',
                     text: 'You have successfully registered',
                     icon: 'success'
                 });
+                // Temptorary solution for storing user data. Will be replaced with a database
                 localStorage.setItem('email', email);
                 localStorage.setItem('password', password);
                 $('#frmRegister').hide();
@@ -170,31 +190,37 @@
 
         $('#btnLogin').click(() => {
             let email = $('#loginEmail').val().trim();
-            let password = $('#loginPassword').val().trim();
+            let password = $('#loginPassword').val();
+            let blnError = false;
+            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+            
             if (email == '' || password == '') {
+                blnError = true
+                strMessage += '<p class="mt-0 mb-0">Please enter an email and password</p>'
+            } 
+            if (!regemail.test(email)) {
+                blnError = true
+                strMessage += '<p class="mt-0 mb-0">Please enter a tech email</p>'
+            }
+            if (email != localStorage.getItem('email') && password != localStorage.getItem('password')) {
+                blnError = true
+                strMessage += '<p class="mt-0 mb-0">Invalid login</p>'
+            }
+
+            if (blnError) {
                 Swal.fire({
-                    title: 'Error',
-                    text: 'Please enter an email and password',
+                    title: 'Oh no, you have an error!',
+                    html: strMessage,
                     icon: 'error'
-                });
+                })
             } else {
-                let storedEmail = localStorage.getItem('email');
-                let storedPassword = localStorage.getItem('password');
-                if (email == storedEmail && password == storedPassword) {
-                    Swal.fire({
-                        title: 'Success',
-                        text: 'You have successfully logged in',
-                        icon: 'success'
-                    });
-                    $('#frmLogin').hide();
-                    $('#frmSurvey').show();
-                } else {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Invalid email or password',
-                        icon: 'error'
-                    });
-                }
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully logged in',
+                    icon: 'success'
+                });
+                $('#frmLogin').hide();
+                $('#frmSurvey').show();
             }
         })
 
@@ -222,6 +248,7 @@
                 blnError = true
                 strMessage += '<p class="mt-0 mb-0">Please select a score</p>'
             }
+            // Incomplete checks
 
             //SweetAlert for Dashboardful or failed registration
             if (blnError) {
