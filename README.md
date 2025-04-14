@@ -67,6 +67,8 @@ Student Experience
 - Reports 
 - Combined feedback 
 - Overall scores
+- View teammates
+- Apply survey given by faculty member
 
 
 Constraints 
