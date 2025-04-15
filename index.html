@@ -36,7 +36,7 @@
             loadPage('login.html')
         })
 
-        // Registration logic
+        // Default Registration logic
         $(document).on('click', '#btnRegister', () => {
             let blnError = false
             let strMessage = ''
@@ -45,7 +45,7 @@
             let passwordConfirm = $('#regPasswordConfirm').val()
             let firstName = $('#regFirstName').val().trim()
             let lastName = $('#regLastName').val().trim()
-            let position = $('#regPosition').val()
+            let position = 'Student'
             const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
 
             // Checks for errors in the registration form
@@ -91,6 +91,62 @@
             }
         })
 
+        // Professor Registration logic
+        $(document).on('click', '#btnRegisterProf', () => {
+            let blnError = false
+            let strMessage = ''
+            let email = $('#regEmailProf').val().trim()
+            let password = $('#regPasswordProf').val()
+            let passwordConfirm = $('#regPasswordConfirmProf').val()
+            let firstName = $('#regFirstNameProf').val().trim()
+            let lastName = $('#regLastNameProf').val().trim()
+            let accessCode = $('#regAccessCode').val()
+            let position = 'Professor'
+            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+
+            // Checks for errors in the registration form
+            if (!regemail.test(email)) {
+                    blnError = true
+                    strMessage += '<p class="mt-0 mb-0">Please enter a tech email</p>'
+            } 
+            if (password != passwordConfirm) {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Passwords do not match</p>';
+            }
+            if (password.length < 8) {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Password must be at least 8 characters</p>';
+            }
+            if (firstName == '' || lastName == '') {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Please enter a first and last name</p>';
+            }
+            if (accessCode != '10204' || accessCode.length() != 6) {
+                blnError = true;
+                strMessage += '<p class="mt-0 mb-0">Incorrect code</p>';
+            }
+
+            
+            if (blnError) {
+                Swal.fire({
+                    title: 'Oh no, you have an error!',
+                    html: strMessage,
+                    icon: 'error'
+                })
+            } else {
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully registered',
+                    icon: 'success'
+                });
+                // Temptorary solution for storing user data. Will be replaced with a database
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('password', password);
+                sessionStorage.setItem('position', position)
+                loadPage('login.html')
+            }
+        })
+        
         // Login logic
         $(document).on('click', '#btnLogin', () => {
             let email = $('#loginEmail').val().trim()
