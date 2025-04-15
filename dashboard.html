@@ -1,0 +1,45 @@
+<!-- filepath: dashboard.html -->
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Dashboard</title>
+    <link rel='icon' href='images/hippoLogo.png' type='image/png'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/yeti/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body class='bg-dark'>
+    <div class='d-flex justify-content-center align-items-center vh-100'>
+        <form class='card col-12 col-md-7 col-lg-5' id='frmDashboard' style='display: none;'> <!--Just a page for fun-->
+            <!--Just to clarify chihuahuaspin.com does NOT belong to me. I jast wanted to test somethings out for making a dashboard
+            for users to land on after logging in. This is meant to be some enterntainment in the assignment ONLY and I take NO
+            ownership of chihuahuaspin.com, it's code, or assets.-->
+            <div class='card-body'>
+                <!--Header, gif, and subheader-->
+                <h2 class='text-center mt-0 text-primary' aria-label='header reading 'Thank you for your submission!''>
+                    <strong>Thank you for your submission!</strong>
+                </h2>
+                <h4 class='text-center text-secondary' aria-label='subheader reading 'Watch this dog now''>Watch this dog now</h4>
+
+                <hr />
+
+                <div class='d-flex justify-content-center align-items-center'>
+                    <!--The gif belongs to chihuahuaspin.com-->
+                    <img src='images/spin.gif' alt='chihuahua wrapped in bubble wrap spinning' style='max-width: 90%;'>
+                    <div id='ethan' style='position: absolute; top: 12px; right: 2px; width: 80px; background-color: #aaa; color: #f00; padding: 5px; display: none'>
+                        You are officially Ethan :-)
+                    </div>
+                </div>
+                <center>
+                    <h4 class='align-items-center'>You have sat through <span id='spin'>0 spins</span>!</h4>
+                </center>
+
+                <hr />
+                
+                <button class='btn btn-primary col-12 mt-0' type='button' id='btnReturn' aria-label='button to retrun to survey'>Return to survey</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
