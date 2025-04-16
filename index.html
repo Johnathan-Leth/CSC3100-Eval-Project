@@ -18,6 +18,17 @@
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossorigin='anonymous'></script>
     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script>
+        // Variables
+        let strMessage = ''
+        let email = ''
+        let password = ''
+        let passwordConfirm = ''
+        let firstName = ''
+        let lastName = ''
+        let position = ''
+        let accessCode = ''
+        const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+
         // Greater logic for changing between forms
         function loadPage(page) {
             $('#frmContainer').load(page, () => {
@@ -32,23 +43,31 @@
 
         // Event listeners for form navigation
         $(document).on('click', '#lnkRegister', () => {
+            event.preventDefault()
             loadPage('register.html')
+            console.log('Register link clicked')
+        })
+        $(document).on('click', '#lnkRegisterProf', () => {
+            event.preventDefault()
+            loadPage('registerProf.html')
+            console.log('Register Prof link clicked')
         })
         $(document).on('click', '#lnkLogin', () => {
+            event.preventDefault()
             loadPage('login.html')
+            console.log('Login link clicked')
         })
 
         // Default Registration logic
         $(document).on('click', '#btnRegister', () => {
             let blnError = false
             let strMessage = ''
-            let email = $('#regEmail').val().trim()
-            let password = $('#regPassword').val()
-            let passwordConfirm = $('#regPasswordConfirm').val()
-            let firstName = $('#regFirstName').val().trim()
-            let lastName = $('#regLastName').val().trim()
-            let position = 'Student'
-            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+            email = $('#regEmail').val().trim()
+            password = $('#regPassword').val()
+            passwordConfirm = $('#regPasswordConfirm').val()
+            firstName = $('#regFirstName').val().trim()
+            lastName = $('#regLastName').val().trim()
+            position = 'Student'
 
             // Checks for errors in the registration form
             if (!regemail.test(email)) {
@@ -71,6 +90,8 @@
                 blnError = true;
                 strMessage += '<p class="mt-0 mb-0">Please select a position</p>';
             }
+
+            console.log('Register button clicked')
 
             
             if (blnError) {
@@ -97,15 +118,14 @@
         $(document).on('click', '#btnRegisterProf', () => {
             let blnError = false
             let strMessage = ''
-            let email = $('#regEmailProf').val().trim()
-            let password = $('#regPasswordProf').val()
-            let passwordConfirm = $('#regPasswordConfirmProf').val()
-            let firstName = $('#regFirstNameProf').val().trim()
-            let lastName = $('#regLastNameProf').val().trim()
-            let accessCode = $('#regAccessCode').val()
-            let position = 'Professor'
-            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
-
+            email = $('#regEmailProf').val().trim()
+            password = $('#regPasswordProf').val()
+            passwordConfirm = $('#regPasswordConfirmProf').val()
+            firstName = $('#regFirstNameProf').val().trim()
+            lastName = $('#regLastNameProf').val().trim()
+            accessCode = $('#regAccessCode').val()
+            position = 'Professor'
+            
             // Checks for errors in the registration form
             if (!regemail.test(email)) {
                     blnError = true
@@ -127,6 +147,8 @@
                 blnError = true;
                 strMessage += '<p class="mt-0 mb-0">Incorrect code</p>';
             }
+
+            console.log('Register button clicked')
 
             
             if (blnError) {
@@ -151,11 +173,10 @@
         
         // Login logic
         $(document).on('click', '#btnLogin', () => {
-            let email = $('#loginEmail').val().trim()
-            let password = $('#loginPassword').val()
+            email = $('#loginEmail').val().trim()
+            password = $('#loginPassword').val()
             let blnError = false
             let strMessage = ''
-            const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
             
             if (email == '' || password == '') {
                 blnError = true
@@ -169,6 +190,8 @@
                 blnError = true
                 strMessage += '<p class="mt-0 mb-0">Invalid login</p>'
             }
+
+            console.log('Login clicked')
 
             if (blnError) {
                 Swal.fire({
