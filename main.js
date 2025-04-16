@@ -33,19 +33,19 @@ window.addEventListener('popstate', (event) => {
 })
 
 // Event listeners for form navigation
-$(document).on('click', '#lnkRegister', (event) => {
-    event.preventDefault()
-    loadPage('register.html')
+$(document).off('click', '#lnkRegister').on('click', '#lnkRegister', (event) => {
+    //event.preventDefault()
+    //loadPage('register.html')
     console.log('Register link clicked')
 })
-$(document).on('click', '#lnkRegisterProf', (event) => {
-    event.preventDefault()
-    loadPage('registerProf.html')
+$(document).off('click', '#lnkRegisterProf').on('click', '#lnkRegisterProf', (event) => {
+    //event.preventDefault()
+    //loadPage('registerProf.html')
     console.log('Register Prof link clicked')
 })
-$(document).on('click', '#lnkLogin', (event) => {
-    event.preventDefault()
-    loadPage('login.html')
+$(document).off('click', '#lnkLogin').on('click', '#lnkLogin', (event) => {
+    //event.preventDefault()
+    //loadPage('login.html')
     console.log('Login link clicked')
 })
 
