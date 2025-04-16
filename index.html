@@ -143,7 +143,7 @@
                 blnError = true;
                 strMessage += '<p class="mt-0 mb-0">Please enter a first and last name</p>';
             }
-            if (accessCode != '10204' || accessCode.length() != 6) {
+            if (accessCode != '102048' || accessCode.length != 6) { // Static access code is temporary
                 blnError = true;
                 strMessage += '<p class="mt-0 mb-0">Incorrect code</p>';
             }
@@ -205,7 +205,7 @@
                     text: 'You have successfully logged in',
                     icon: 'success'
                 });
-                loadPage('survey.html')
+                loadPage('dashboard.html')
             }
         })
 
@@ -250,13 +250,7 @@
                 })
             }
         })
-
-        // This script signs the user out of the dashboard
-        $('#btnReturn').on('click', function(){
-            $('#frmDashboard').slideUp('slow', () => {
-                $('#frmSurvey').slideDown('slow')
-            })
-        })
+    
     </script>
 </body>
 </html>
