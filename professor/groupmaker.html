@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Create Groups</title>
+    <link rel='icon' href='../../images/hippoLogo.png' type='image/png'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/yeti/bootstrap.min.css' rel='stylesheet'>
+</head>
+<body class='bg-dark'>
+    <div class='container mt-5'>
+        <h2 class='text-center text-primary'>Create Groups</h2>
+        <form id='frmGroupMaker' class='mt-4'>
+            <div class='mb-3'>
+                <label for='groupName' class='form-label'>Group Name</label>
+                <input id='groupName' class='form-control' type='text' placeholder='Enter group name' required>
+            </div>
+            <div class='mb-3'>
+                <label for='studentEmails' class='form-label'>Student Emails</label>
+                <textarea id='studentEmails' class='form-control' placeholder='Enter student emails, separated by commas' required></textarea>
+            </div>
+            <button class='btn btn-primary col-12' type='button' id='btnCreateGroup'>Create Group</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('btnCreateGroup').addEventListener('click', () => {
+            const groupName = document.getElementById('groupName').value.trim();
+            const studentEmails = document.getElementById('studentEmails').value.trim();
+
+            if (groupName === '' || studentEmails === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            console.log(`Group Created: ${groupName}`);
+            console.log(`Students: ${studentEmails}`);
+            alert('Group created successfully!');
+        });
+    </script>
+</body>
+</html>

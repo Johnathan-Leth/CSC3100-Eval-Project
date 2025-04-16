@@ -17,6 +17,15 @@ function loadPage(page) {
     });
 }
 
+function redirectToDashboard() {
+    const role = sessionStorage.getItem('position');
+    if (role === 'Student') {
+        loadPage('dashboardstudent.html');
+    } else if (role === 'Professor') {
+        loadPage('dashboard.html');
+    }
+}
+
 // Load login page by default
 $(document).ready(() => {
     const currentPage = window.location.pathname.split('/').pop() || 'login.html'; // Default to login.html
