@@ -20,7 +20,9 @@
     <script>
         // Greater logic for changing between forms
         function loadPage(page) {
-            $('#frmContainer').load(page)
+            $('#frmContainer').load(page, () => {
+                console.log(`Loaded ${page}`)
+            })
         }
 
         // Login page by default
