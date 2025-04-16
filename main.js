@@ -224,8 +224,8 @@ const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+
             title: 'Success',
             text: 'You have successfully logged in',
             icon: 'success'
-        })
-        loadPage('dashboard.html')
+        });
+        redirectToDashboard();
     }
 })
 
