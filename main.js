@@ -201,7 +201,7 @@ $(document).on('click', '#btnLogin', () => {
             text: 'You have successfully logged in',
             icon: 'success'
         });
-        loadPage('dashboard.html')
+        redirectToDashboard();
     }
 })
 

@@ -9,18 +9,20 @@
     <link href='https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/yeti/bootstrap.min.css' rel='stylesheet'>
 </head>
 <body class='bg-dark'>
-    <div class='container mt-5'>
-        <h2 class='text-center text-primary'>Create Groups</h2>
-        <form id='frmGroupMaker' class='mt-4'>
-            <div class='mb-3'>
-                <label for='groupName' class='form-label'>Group Name</label>
-                <input id='groupName' class='form-control' type='text' placeholder='Enter group name' required>
+    <div class='d-flex justify-content-center align-items-center vh-100'>
+        <form class='card col-12 col-md-7 col-lg-5' id='frmGroupMaker'>
+            <div class='card-body'>
+                <h2 class='text-center text-primary'>Create Groups</h2>
+                <div class='mb-3'>
+                    <label for='groupName' class='form-label'>Group Name</label>
+                    <input id='groupName' class='form-control' type='text' placeholder='Enter group name' required>
+                </div>
+                <div class='mb-3'>
+                    <label for='studentEmails' class='form-label'>Student Emails</label>
+                    <textarea id='studentEmails' class='form-control' placeholder='Enter student emails, separated by commas' rows='5' required></textarea>
+                </div>
+                <button class='btn btn-primary col-12' type='button' id='btnCreateGroup'>Create Group</button>
             </div>
-            <div class='mb-3'>
-                <label for='studentEmails' class='form-label'>Student Emails</label>
-                <textarea id='studentEmails' class='form-control' placeholder='Enter student emails, separated by commas' required></textarea>
-            </div>
-            <button class='btn btn-primary col-12' type='button' id='btnCreateGroup'>Create Group</button>
         </form>
     </div>
     <script>
