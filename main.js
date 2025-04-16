@@ -52,23 +52,15 @@ $(document).on('click', '#lnkLogin', (event) => {
 // Default Registration logic
 $(document).on('click', '#btnRegister', () => {
     // Variables
-let email = ''
-let password = ''
-let passwordConfirm = ''
-let firstName = ''
-let lastName = ''
-let position = ''
-let accessCode = ''
-const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
-
+    const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
     let blnError = false
     let strMessage = ''
-    email = $('#regEmail').val().trim()
-    password = $('#regPassword').val()
-    passwordConfirm = $('#regPasswordConfirm').val()
-    firstName = $('#regFirstName').val().trim()
-    lastName = $('#regLastName').val().trim()
-    position = 'Student'
+    let email = $('#regEmail').val().trim()
+    let password = $('#regPassword').val()
+    let passwordConfirm = $('#regPasswordConfirm').val()
+    let firstName = $('#regFirstName').val().trim()
+    let lastName = $('#regLastName').val().trim()
+    let position = 'Student'
 
     // Checks for errors in the registration form
     if (!regemail.test(email)) {
@@ -117,24 +109,16 @@ const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+
 // Professor Registration logic
 $(document).on('click', '#btnRegisterProf', () => {
     // Variables
-let email = ''
-let password = ''
-let passwordConfirm = ''
-let firstName = ''
-let lastName = ''
-let position = ''
-let accessCode = ''
-const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
-
+    const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
     let blnError = false
     let strMessage = ''
-    email = $('#regEmailProf').val().trim()
-    password = $('#regPasswordProf').val()
-    passwordConfirm = $('#regPasswordConfirmProf').val()
-    firstName = $('#regFirstNameProf').val().trim()
-    lastName = $('#regLastNameProf').val().trim()
-    accessCode = $('#regAccessCode').val()
-    position = 'Professor'
+    let email = $('#regEmailProf').val().trim()
+    let password = $('#regPasswordProf').val()
+    let passwordConfirm = $('#regPasswordConfirmProf').val()
+    let firstName = $('#regFirstNameProf').val().trim()
+    let lastName = $('#regLastNameProf').val().trim()
+    let accessCode = $('#regAccessCode').val()
+    let position = 'Professor'
     
     // Checks for errors in the registration form
     if (!regemail.test(email)) {
@@ -184,17 +168,9 @@ const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+
 // Login logic
 $(document).on('click', '#btnLogin', () => {
     // Variables
-let email = ''
-let password = ''
-let passwordConfirm = ''
-let firstName = ''
-let lastName = ''
-let position = ''
-let accessCode = ''
-const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
-
-    email = $('#loginEmail').val().trim()
-    password = $('#loginPassword').val()
+    const regemail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)*tntech\.edu$/
+    let email = $('#loginEmail').val().trim()
+    let password = $('#loginPassword').val()
     let blnError = false
     let strMessage = ''
     
