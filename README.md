@@ -126,3 +126,27 @@ Useful Tools and Suggestions from the client
  - Make sure to hash the passwords
  - Encourages extra features to secure the 'A' grade
  - If we don't get to it in class you can't use it
+
+
+Database Info
+- Name
+- Email
+- Password - Created/Last Used
+- Last Login
+- Preferred Contact Method
+- Account Creation Date
+- Course Name, ID, Who Owns The Course/Teaches It
+- Course Number and Section Number
+- Semester Code (ex: Spr25, Fall22)
+- Enrolled Students
+- General Users With Different Roles in Different Courses
+  - Reviews
+     - Date Created
+     - Title
+     - Groups
+     - Group Members
+     - How Many
+     - Table That Handles Questions In The Survey
+     - Responses
+     - By This Point At Least 6 Tables
+     - Tblcourses, TblReveiws, Tblusers, Tblcontactdetails, tblsocials, tblassessments, tblassesmentquestions, tblassementresponse, tblgroups, tblsessions, tblogs
